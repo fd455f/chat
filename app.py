@@ -1,14 +1,16 @@
 from flask import Flask
-
+from random import choice
 
 app = Flask(__name__)
 
 @app.route("/")
-def index(req):
-    return "{\"fulfillmentText\": \"Veio do webhook do heroku\", \"followupEventInput\" : {\"name\": \"DesvioWebHook\"}}"
+def index():
+    if (random.choice([True, False])):
+        return "{\"fulfillmentText\": \"Horário não disponível, tente outro.\", \"followupEventInput\" : {\"name\": \"marcar\"}}"
+    else:
+        return "{\"fulfillmentText\": \"E qual seu nome ?\", \"followupEventInput\" : {\"name\": \"dados\"}}"
 
-# Wrap Flask app with Talisman
-#Talisman(app, content_security_policy=None)
+
 
 if __name__ == '__main__':
     app.run(debug=False)
