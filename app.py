@@ -4,7 +4,7 @@ from random import choice
 app = Flask(__name__)
 
 @app.route("/", methods = ['GET', 'POST'])
-def index(req, outro):
+def index():
     if (random.choice([True, False])):
         return "{\"fulfillmentText\": \"Horário não disponível, tente outro.\", \"followupEventInput\" : {\"name\": \"marcar\"}}"
     else:
